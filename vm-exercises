@@ -1,0 +1,66 @@
+#### Dataset
+
+- [ ] Attrition Date
+
+#### Files
+
+- [ ] ex-3a-intial.twbx
+- [ ] ex-3a-sol.twbx
+
+#### Learning Objective
+
+Learn to create new scripts for R in Tableau using Median, Standard Deviation, and Variance.
+
+#### Context
+
+In this context of this exercise, Median is a more helpful measure of center due to the skewness of the "Distance from Home" histogram, and Standard Deviation and Variance fill in additional context regarding a distribution. More generally, this point of this exercise is to practice creating scripts for R in Tableau, so that more complex work can be done in the future.
+
+#### Steps to be executed by the student (max 6)
+
+- Create a calculated field called Median Num of Employees that returns a real number representing the median number of employees. The R function for median is median().
+- Click and drag the "Median Num of Employees" measure *onto* where the "Avg Num of Employees" pill is on the rows shelf, so that the displayed line on the graph plots the median for the table, which is 150.4.
+- Create a calculated field called "SD Num of Employees" with the logic SCRIPT_REAL("sd(.arg1)",COUNT([Employee ID])).
+- Drag "SD Num of Employees" onto the Tooltip card for the Median Num of Employees mark. Hover over the line with your mouse to verify that the number 186.1 
+- Create a calculated field called "Variance = StdDev Squared" with the logic SCRIPT_BOOL("sd(.arg1)^2 == var(.arg1)",COUNT([Employee ID])).
+- Drag "Variance = StdDev Square" onto the Tooltip card for the Median Num of Employees mark. Hover over the line with your mouse to verify the value of True.
+
+#### Exercise question:
+If you had wanted to populate a calculated field with a real number that was the difference between the mean and the median count of employee, what would the syntax be?
+
+#### End goal:
+
+https://drive.google.com/file/d/1Vyve04KRxrJMxqXb7SQS8OhSoUX52plt/view?usp=sharing
+
+## 2nd VM Exercise
+
+#### Dataset
+
+- [ ] Attrition Date
+
+#### Files
+
+- [ ] ex-3b-intial.twbx
+- [ ] ex-3b-sol.twbx
+
+#### Learning Objective
+
+Compare Functionality of R statistics with Tableau's base analytics features.
+
+#### Context
+
+Combining the versatility of custom-written R scripts with the visual power of Tableau's built in analytics features can lead to powerful visualizations, so in this exercise we'll compare some of the calculated R fields with what Tableau can produce on its own.
+
+#### Steps to be executed by the student (max 6)
+
+- On the Distance from Home Histogram tab, create a calculated field called "Mean +1 StdDev" and give it the logic SCRIPT_REAL("mean(.arg1) + sd(.arg1)",COUNT([Employee ID])).
+- Drag "Mean +1 StdDev" onto the Median Num of Employees pill on the rows shelf, so that now the reference line plots a position on the graph 1 standard deviation above the mean.
+- Go the the Analytics tab and click and drag "Reference Band" onto the viz area and drop it onto the card for Table.
+- In the reference band options, select "Standard Deviation" from the value dropdown, and verify the text beside it is "-1,1".
+- Click "ok". There is now a reference band showing the range between mean -1 standard deviation and +1 standard deviation, and the top of the band should be at the level of the line on your dual axis chart.
+
+#### Exercise question:
+Since the reference band already plots the location of -1 and +1 standard deviation, how could you set the reference line you created to once again display the median?
+
+#### End goal:
+
+https://drive.google.com/file/d/15BzCnwM1zBfOJK01xIC0hBEbeNv-w6wS/view?usp=sharing
